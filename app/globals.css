@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* 固定ヘッダー分のスクロールオフセット */
+    scroll-padding-top: 5rem;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-kinari text-sumi font-gothic antialiased;
+    /* 本文は最小 15px。スマホでの可読性を優先 */
+    font-size: 15px;
+    line-height: 1.9;
+    letter-spacing: 0.04em;
+    overflow-x: hidden;
+  }
+
+  @media (min-width: 768px) {
+    body {
+      font-size: 16px;
+    }
+  }
+
+  /* 見出しは明朝。和文は字間をやや広く、行間はゆったり。 */
+  h1,
+  h2,
+  h3 {
+    @apply font-mincho;
+    line-height: 1.55;
+    letter-spacing: 0.06em;
+    font-weight: 400;
+  }
+
+  /* 画像は常にブロック要素として扱い、下部の余白を殺す */
+  img {
+    display: block;
+  }
+
+  ::selection {
+    background-color: #e4dccc;
+    color: #23211e;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  /* 共通の左右パディング。スマホは 24px、PC は 40px 以上。 */
+  .container-x {
+    @apply mx-auto w-full max-w-content px-6 md:px-10 lg:px-14;
+  }
+
+  /* 縦のリズム。セクション間の余白を統一する。 */
+  .section-y {
+    @apply py-20 md:py-28 lg:py-36;
+  }
+
+  /* 英字の装飾ラベル（MORNING / LUNCH / CONCEPT など） */
+  .eyebrow {
+    @apply font-en-sans text-[11px] uppercase tracking-en-wide md:text-xs;
+  }
+
+  /* 和文の縦組み風リード文 */
+  .lead {
+    @apply font-mincho text-[1.0625rem] leading-[2.1] tracking-ja-wide md:text-lg;
+  }
+
+  /* 罫線ではなく「面」で区切るための細いライン */
+  .hairline {
+    @apply h-px w-full bg-sumi/10;
+  }
+}
+
+@layer utilities {
+  /* 100vh の代わりに使う実寸ビューポート高（iOS のアドレスバー対策） */
+  .h-screen-safe {
+    height: 100vh;
+    height: 100svh;
+  }
+
+  .min-h-screen-safe {
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+
+  /* 日本語の折り返しを文節単位に近づける */
+  .text-ja {
+    word-break: normal;
+    overflow-wrap: anywhere;
+    line-break: strict;
+  }
+
+  /* 固定 CTA 分の下部余白（iOS のホームバー含む） */
+  .pb-safe-cta {
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 4.5rem);
+  }
+
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+}

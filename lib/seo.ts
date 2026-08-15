@@ -1,0 +1,114 @@
+import type { Metadata } from "next";
+import { shop } from "@/content/shop";
+import { images } from "@/lib/images";
+
+const siteUrl = shop.siteUrl;
+
+/**
+ * ページ共通のメタデータ生成。
+ * タイトル・説明文はページごとに個別に設定しています。
+ */
+export function buildMetadata({
+  title,
+  description,
+  path,
+  image = images.ogp,
+}: {
+  title: string;
+  description: string;
+  path: string;
+  image?: string;
+}): Metadata {
+  const url = `${siteUrl}${path}`;
+
+  /* 既定のOGP画像だけが 1200×630。個別画像は寸法を宣言しない。 */
+  const ogImage =
+    image === images.ogp
+      ? { url: image, width: 1200, height: 630, alt: shop.name }
+      : { url: image, alt: shop.name };
+
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      type: "website",
+      siteName: shop.name,
+      locale: "ja_JP",
+      title,
+      description,
+      url,
+      images: [ogImage],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image],
+    },
+  };
+}
+
+/**
+ * 構造化データ（Restaurant / LocalBusiness）。
+ * 未確定の項目（電話番号・営業時間・価格帯）は出力しないため、
+ * 誤った情報が検索結果に出ることはありません。
+ * content/shop.ts を埋めれば自動的に反映されます。
+ */
+export function restaurantJsonLd() {
+  const openingHours = shop.hours
+    .filter((h) => h.time)
+    .map((h) => `${h.label} ${h.time}`);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "@id": `${siteUrl}/#restaurant`,
+    name: shop.name,
+    alternateName: shop.nameEn,
+    url: siteUrl,
+    image: `${siteUrl}${images.ogp}`,
+    description:
+      "奈良県橿原市のポケ専門店。奈良の食材と和の感性を掛け合わせたポケボウルを、モーニングとランチでお届けします。",
+    servesCuisine: ["ポケ", "ポケ丼", "カフェ"],
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "JP",
+      addressRegion: shop.address.prefecture,
+      addressLocality: shop.address.city,
+      streetAddress: shop.address.street,
+      ...(shop.address.postalCode ? { postalCode: shop.address.postalCode } : {}),
+    },
+    hasMap: shop.mapUrl,
+    sameAs: [shop.instagram.url],
+    ...(shop.tel ? { telephone: shop.tel } : {}),
+    ...(openingHours.length ? { openingHours } : {}),
+    amenityFeature: {
+      "@type": "LocationFeatureSpecification",
+      name: "駐車場",
+      value: shop.parking,
+    },
+  };
+}
+
+/** パンくず（下層ページ用） */
+export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      item: `${siteUrl}${item.path}`,
+    })),
+  };
+}
+
+/** JSON-LD を <script> として埋め込むためのヘルパー */
+export function jsonLdProps(data: unknown) {
+  return {
+    type: "application/ld+json",
+    dangerouslySetInnerHTML: { __html: JSON.stringify(data) },
+  } as const;
+}
