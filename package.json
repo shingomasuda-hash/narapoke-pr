@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "images": "node scripts/generate-placeholders.mjs"
+    "images": "node scripts/generate-placeholders.mjs",
+    "photos": "node scripts/import-photos.mjs",
+    "photos:plan": "node scripts/import-photos.mjs --plan"
   },
   "dependencies": {
     "motion": "^13.1.0",

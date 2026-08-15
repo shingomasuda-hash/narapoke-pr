@@ -14,6 +14,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";
+import { manifest } from "./image-manifest.mjs";
 
 const OUT_DIR = path.join(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -88,89 +89,6 @@ function svg({ w, h, tone, label, index }) {
   ).padStart(2, "0")} / ${w}×${h}</text>
 </svg>`;
 }
-
-/**
- * 画像マニフェスト
- * file … public/images/ 配下のファイル名（lib/images.ts と対応）
- * w,h  … 推奨サイズ。差し替え時もこの縦横比を守ると崩れません。
- */
-const manifest = [
-  /* ---------------- 共通 / TOP ---------------- */
-  { file: "hero-top.jpg", w: 2000, h: 1250, tone: "wood", label: "HERO" },
-  { file: "hero-top-sp.jpg", w: 1200, h: 1600, tone: "wood", label: "HERO SP" },
-  { file: "concept.jpg", w: 1200, h: 1500, tone: "base", label: "CONCEPT" },
-  { file: "gate-morning.jpg", w: 1200, h: 1500, tone: "light", label: "MORNING" },
-  { file: "gate-lunch.jpg", w: 1200, h: 1500, tone: "warm", label: "LUNCH" },
-  { file: "shop-exterior.jpg", w: 1600, h: 1000, tone: "base", label: "SHOP" },
-  { file: "shop-interior.jpg", w: 1200, h: 1500, tone: "wood", label: "INTERIOR" },
-
-  /* ---------------- TOP ギャラリー ---------------- */
-  { file: "gallery-01.jpg", w: 1400, h: 1000, tone: "warm", label: "POKE BOWL" },
-  { file: "gallery-02.jpg", w: 900, h: 1200, tone: "light", label: "MORNING SET" },
-  { file: "gallery-03.jpg", w: 1000, h: 1000, tone: "moss", label: "VEGETABLE" },
-  { file: "gallery-04.jpg", w: 900, h: 1200, tone: "wood", label: "TABLE" },
-  { file: "gallery-05.jpg", w: 1400, h: 900, tone: "base", label: "INTERIOR" },
-  { file: "gallery-06.jpg", w: 1000, h: 1000, tone: "warm", label: "DETAIL" },
-
-  /* ---------------- Instagram ---------------- */
-  ...[1, 2, 3, 4, 5, 6].map((n) => ({
-    file: `instagram-0${n}.jpg`,
-    w: 900,
-    h: 900,
-    tone: ["warm", "light", "base", "moss", "wood", "warm"][n - 1],
-    label: "INSTAGRAM",
-  })),
-
-  /* ---------------- Morning ---------------- */
-  { file: "morning-hero.jpg", w: 2000, h: 1250, tone: "light", label: "MORNING" },
-  { file: "morning-hero-sp.jpg", w: 1200, h: 1600, tone: "light", label: "MORNING" },
-  { file: "morning-story.jpg", w: 1200, h: 1500, tone: "light", label: "STORY" },
-  { file: "morning-cta.jpg", w: 2000, h: 1100, tone: "wood", label: "GOOD MORNING" },
-  ...[1, 2, 3].map((n) => ({
-    file: `morning-menu-0${n}.jpg`,
-    w: 1200,
-    h: 900,
-    tone: n === 1 ? "light" : "base",
-    label: "MORNING MENU",
-  })),
-  ...[1, 2, 3, 4].map((n) => ({
-    file: `morning-scene-0${n}.jpg`,
-    w: n % 2 === 0 ? 900 : 1200,
-    h: n % 2 === 0 ? 1200 : 900,
-    tone: ["light", "base", "wood", "light"][n - 1],
-    label: "SCENE",
-  })),
-
-  /* ---------------- Lunch ---------------- */
-  { file: "lunch-hero.jpg", w: 2000, h: 1250, tone: "warm", label: "LUNCH" },
-  { file: "lunch-hero-sp.jpg", w: 1200, h: 1600, tone: "warm", label: "LUNCH" },
-  { file: "lunch-concept.jpg", w: 1400, h: 1000, tone: "warm", label: "POKE" },
-  { file: "lunch-cta.jpg", w: 2000, h: 1100, tone: "dark", label: "TODAY'S LUNCH" },
-  ...[1, 2, 3, 4].map((n) => ({
-    file: `lunch-menu-0${n}.jpg`,
-    w: 1200,
-    h: 900,
-    tone: ["warm", "base", "moss", "wood"][n - 1],
-    label: "LUNCH MENU",
-  })),
-  ...[1, 2, 3, 4].map((n) => ({
-    file: `lunch-step-0${n}.jpg`,
-    w: 900,
-    h: 900,
-    tone: ["base", "moss", "warm", "wood"][n - 1],
-    label: ["PICK", "TOPPING", "SAUCE", "ENJOY"][n - 1],
-  })),
-  { file: "lunch-gallery-01.jpg", w: 1000, h: 1000, tone: "warm", label: "EGG YOLK" },
-  { file: "lunch-gallery-02.jpg", w: 900, h: 1200, tone: "moss", label: "GREENS" },
-  { file: "lunch-gallery-03.jpg", w: 1400, h: 900, tone: "warm", label: "SASHIMI" },
-  { file: "lunch-gallery-04.jpg", w: 900, h: 1200, tone: "wood", label: "SAUCE" },
-  { file: "lunch-gallery-05.jpg", w: 1000, h: 1000, tone: "base", label: "RICE" },
-  { file: "lunch-gallery-06.jpg", w: 1400, h: 900, tone: "warm", label: "BOWL" },
-
-  /* ---------------- OGP / メニュー未設定時のフォールバック ---------------- */
-  { file: "ogp.jpg", w: 1200, h: 630, tone: "wood", label: "NARA WA POKE BIYORI" },
-  { file: "menu-placeholder.jpg", w: 1200, h: 900, tone: "base", label: "COMING SOON" },
-];
 
 await mkdir(OUT_DIR, { recursive: true });
 
