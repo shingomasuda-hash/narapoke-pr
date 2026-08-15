@@ -45,7 +45,7 @@ export const shop = {
   closed: "",
 
   /** 電話番号（空の場合は電話CTAを非表示） */
-  tel: "",
+  tel: "0744-32-1156",
 
   /* ---------------- 外部リンク ---------------- */
   instagram: {
@@ -71,7 +71,7 @@ export const shop = {
    *           自社予約なら空のままで構いません。
    */
   reservation: {
-    url: "",
+    url: "https://narapoke.vercel.app",
     label: "ネット予約",
     provider: "",
   },

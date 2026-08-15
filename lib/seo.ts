@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { shop } from "@/content/shop";
+import { hasReservation, shop } from "@/content/shop";
 import { images } from "@/lib/images";
 
 const siteUrl = shop.siteUrl;
@@ -83,6 +83,25 @@ export function restaurantJsonLd() {
     sameAs: [shop.instagram.url],
     ...(shop.tel ? { telephone: shop.tel } : {}),
     ...(openingHours.length ? { openingHours } : {}),
+    /* 予約URLが設定されているときだけ、予約可であることと予約導線を出力する */
+    ...(hasReservation
+      ? {
+          acceptsReservations: true,
+          potentialAction: {
+            "@type": "ReserveAction",
+            target: {
+              "@type": "EntryPoint",
+              urlTemplate: shop.reservation.url,
+              inLanguage: "ja",
+              actionPlatform: [
+                "https://schema.org/DesktopWebPlatform",
+                "https://schema.org/MobileWebPlatform",
+              ],
+            },
+            result: { "@type": "Reservation", name: "座席の予約" },
+          },
+        }
+      : {}),
     amenityFeature: {
       "@type": "LocationFeatureSpecification",
       name: "駐車場",
