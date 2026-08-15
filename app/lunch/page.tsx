@@ -7,7 +7,7 @@ import { CtaSection } from "@/components/sections/CtaSection";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { CtaLink } from "@/components/ui/CtaLink";
 import { lunchMenu, lunchPage } from "@/content/lunch";
-import { shop } from "@/content/shop";
+import { hasReservation, shop } from "@/content/shop";
 import { images } from "@/lib/images";
 import { breadcrumbJsonLd, buildMetadata, jsonLdProps } from "@/lib/seo";
 
@@ -97,7 +97,25 @@ export default function LunchPage() {
         image={lunchPage.cta.image}
         scrim={0.62}
         links={[
-          { label: "Google Mapで見る", href: shop.mapUrl, external: true, primary: true },
+          /* 予約URLが設定されていれば、それを主要CTAにする */
+          ...(hasReservation
+            ? [
+                {
+                  label: shop.reservation.label,
+                  href: shop.reservation.url,
+                  external: true,
+                  primary: true,
+                },
+                { label: "Google Mapで見る", href: shop.mapUrl, external: true },
+              ]
+            : [
+                {
+                  label: "Google Mapで見る",
+                  href: shop.mapUrl,
+                  external: true,
+                  primary: true,
+                },
+              ]),
           { label: "Instagram", href: shop.instagram.url, external: true },
           { label: "モーニングを見る", href: "/morning" },
         ]}

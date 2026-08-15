@@ -54,6 +54,29 @@ export const shop = {
   },
 
   /**
+   * ネット予約
+   * ------------------------------------------------------------
+   * url に予約ページのURLを入れると、サイト全体に予約ボタンが表示されます。
+   *   ・ヘッダー（PC・スマホメニュー）
+   *   ・スマホ下部の固定バー
+   *   ・アクセス／店舗情報
+   *   ・各ページ下部のCTA
+   *
+   * url が空の間はどこにも表示されません。誤った予約先へ誘導しないよう、
+   * 正しいURLが確定してから入れてください。
+   *
+   * label   … ボタンの文言
+   * provider… 予約先のサービス名（例: "食べログ"）。
+   *           入れるとアクセス欄に「予約先：食べログ」と補足が出ます。
+   *           自社予約なら空のままで構いません。
+   */
+  reservation: {
+    url: "",
+    label: "ネット予約",
+    provider: "",
+  },
+
+  /**
    * Google マップ
    * 店名＋住所で検索する公式フォーマットのURL。
    * 正式なプレイスURL（https://maps.app.goo.gl/xxxx）が分かり次第、
@@ -75,6 +98,9 @@ export const shop = {
 
 /** 営業時間が1件でも入力されているか */
 export const hasHours = shop.hours.some((h) => h.time.trim() !== "");
+
+/** ネット予約のURLが設定されているか（未設定なら予約ボタンは一切出ない） */
+export const hasReservation = shop.reservation.url.trim() !== "";
 
 /** ヘッダー / フッター共通のナビゲーション */
 export const navigation = [

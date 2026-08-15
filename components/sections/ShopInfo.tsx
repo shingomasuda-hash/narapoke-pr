@@ -3,7 +3,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { CtaLink } from "@/components/ui/CtaLink";
 import { images } from "@/lib/images";
-import { hasHours, shop } from "@/content/shop";
+import { hasHours, hasReservation, shop } from "@/content/shop";
 
 type Row = { label: string; value: string };
 
@@ -76,8 +76,31 @@ export function ShopInfo({
                 </p>
               )}
 
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <CtaLink href={shop.mapUrl} external variant="solid" className="sm:flex-1">
+              {/* 予約URLが設定されているときだけ、最優先のCTAとして先頭に出す */}
+              {hasReservation && (
+                <div className="mt-9">
+                  <CtaLink href={shop.reservation.url} external variant="solid" full>
+                    {shop.reservation.label}
+                  </CtaLink>
+                  {shop.reservation.provider && (
+                    <p className="mt-2 text-center text-[0.75rem] tracking-ja-wide text-sumi-soft text-ja">
+                      予約先：{shop.reservation.provider}
+                    </p>
+                  )}
+                </div>
+              )}
+
+              <div
+                className={`flex flex-col gap-3 sm:flex-row ${
+                  hasReservation ? "mt-3" : "mt-9"
+                }`}
+              >
+                <CtaLink
+                  href={shop.mapUrl}
+                  external
+                  variant={hasReservation ? "outline" : "solid"}
+                  className="sm:flex-1"
+                >
                   Google Mapで見る
                 </CtaLink>
                 <CtaLink

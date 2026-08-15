@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
-import { navigation, shop } from "@/content/shop";
+import { hasReservation, navigation, shop } from "@/content/shop";
 import { BrandMark } from "@/components/ui/BrandMark";
 import { InstagramIcon, MapPinIcon } from "@/components/ui/Icons";
 
@@ -104,6 +104,19 @@ export function Header() {
           >
             <InstagramIcon className="h-[1.15rem] w-[1.15rem]" />
           </a>
+
+          {/* 予約URLが未設定のときは表示しない */}
+          {hasReservation && (
+            <a
+              href={shop.reservation.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              /* 枠線・文字とも currentColor。ヒーロー上の白文字でもそのまま馴染む */
+              className="border border-current px-5 py-2.5 font-gothic text-xs tracking-ja-wide transition-opacity duration-300 hover:opacity-60"
+            >
+              {shop.reservation.label}
+            </a>
+          )}
         </nav>
 
         {/* ---------- スマホ ハンバーガー ---------- */}
@@ -171,25 +184,38 @@ export function Header() {
               ))}
             </nav>
 
-            <div className="container-x grid grid-cols-2 gap-3 pb-10">
-              <a
-                href={shop.mapUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex min-h-[3.25rem] items-center justify-center gap-2 border border-sumi/25 text-[0.8125rem] tracking-ja-wide text-sumi"
-              >
-                <MapPinIcon className="h-4 w-4" />
-                Google Map
-              </a>
-              <a
-                href={shop.instagram.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex min-h-[3.25rem] items-center justify-center gap-2 bg-sumi text-[0.8125rem] tracking-ja-wide text-ivory"
-              >
-                <InstagramIcon className="h-4 w-4" />
-                Instagram
-              </a>
+            <div className="container-x pb-10">
+              {hasReservation && (
+                <a
+                  href={shop.reservation.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mb-3 flex min-h-[3.25rem] items-center justify-center bg-kaki text-[0.8125rem] tracking-ja-wide text-ivory"
+                >
+                  {shop.reservation.label}
+                </a>
+              )}
+
+              <div className="grid grid-cols-2 gap-3">
+                <a
+                  href={shop.mapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex min-h-[3.25rem] items-center justify-center gap-2 border border-sumi/25 text-[0.8125rem] tracking-ja-wide text-sumi"
+                >
+                  <MapPinIcon className="h-4 w-4" />
+                  Google Map
+                </a>
+                <a
+                  href={shop.instagram.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex min-h-[3.25rem] items-center justify-center gap-2 bg-sumi text-[0.8125rem] tracking-ja-wide text-ivory"
+                >
+                  <InstagramIcon className="h-4 w-4" />
+                  Instagram
+                </a>
+              </div>
             </div>
           </motion.div>
         )}

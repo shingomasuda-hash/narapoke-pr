@@ -5,7 +5,7 @@ import { SceneGrid } from "@/components/sections/SceneGrid";
 import { CtaSection } from "@/components/sections/CtaSection";
 import { CtaLink } from "@/components/ui/CtaLink";
 import { morningMenu, morningPage } from "@/content/morning";
-import { shop } from "@/content/shop";
+import { hasReservation, shop } from "@/content/shop";
 import { images } from "@/lib/images";
 import { breadcrumbJsonLd, buildMetadata, jsonLdProps } from "@/lib/seo";
 
@@ -82,7 +82,25 @@ export default function MorningPage() {
         image={morningPage.cta.image}
         scrim={0.58}
         links={[
-          { label: "Google Mapで見る", href: shop.mapUrl, external: true, primary: true },
+          /* 予約URLが設定されていれば、それを主要CTAにする */
+          ...(hasReservation
+            ? [
+                {
+                  label: shop.reservation.label,
+                  href: shop.reservation.url,
+                  external: true,
+                  primary: true,
+                },
+                { label: "Google Mapで見る", href: shop.mapUrl, external: true },
+              ]
+            : [
+                {
+                  label: "Google Mapで見る",
+                  href: shop.mapUrl,
+                  external: true,
+                  primary: true,
+                },
+              ]),
           { label: "Instagram", href: shop.instagram.url, external: true },
           { label: "ランチを見る", href: "/lunch" },
         ]}
