@@ -6,7 +6,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/", priority: 1 },
     { path: "/morning", priority: 0.9 },
     { path: "/lunch", priority: 0.9 },
-    { path: "/dinner", priority: 0.9 },
     { path: "/sweets", priority: 0.8 },
     { path: "/access", priority: 0.6 },
   ];

@@ -50,7 +50,7 @@ export const lunchMenu: MenuItem[] = [
 
 export const lunchPage = {
   hero: {
-    en: "LUNCH",
+    en: "LUNCH & DINNER",
     title: ["今日のごほうびに、", "ならポケ。"],
     lead: "混ぜて、美味しい。選んで、楽しい。",
     image: images.lunch.hero,
@@ -62,16 +62,18 @@ export const lunchPage = {
     title: ["ひとつのボウルに、", "好きなものを。"],
     paragraphs: [
       "魚・野菜・ご飯・タレ。\n好きなものを一つのボウルで楽しめるポケに、日本らしい味と奈良らしい感性を。",
-      "食べ応えはあるのに、重たすぎない。\nそんなランチを届けます。",
+      "食べ応えはあるのに、重たすぎない。\nそんな一皿を、昼も夜も。",
     ],
     image: images.lunch.concept,
   },
 
   menu: {
-    en: "LUNCH MENU",
-    title: "昼のおしながき",
+    en: "LUNCH & DINNER MENU",
+    title: "昼と夜のおしながき",
+    /** 見出しの下に添える一文。空にすると非表示になります。 */
+    note: "ランチとディナーは同じメニューです。",
     emptyNote:
-      "ランチメニューは現在準備中です。\n最新のメニューはInstagramで公開しています。",
+      "メニューは現在準備中です。\n最新のメニューはInstagramで公開しています。",
   },
 
   /**
@@ -113,6 +115,22 @@ export const lunchPage = {
         image: images.lunch.steps[3],
       },
     ] satisfies Step[],
+  },
+
+  /**
+   * ■ 夜の顔
+   * ディナーはランチと同じメニューのため、専用ページは設けず
+   * このページの後半で夜の世界観を見せている。
+   * 写真は lib/images.ts の dinner.* を流用。
+   */
+  night: {
+    en: "AT NIGHT",
+    title: ["夜は、", "灯りを落として。"],
+    paragraphs: [
+      "メニューは昼と同じ。\n変わるのは、店内の灯りと、時間の流れだけ。",
+      "仕事帰りにひとりで。誰かと囲んで。\n奈良の夜に、肩の力を抜ける場所を。",
+    ],
+    image: images.dinner.concept,
   },
 
   gallery: {

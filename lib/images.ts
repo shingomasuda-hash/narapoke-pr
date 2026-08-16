@@ -30,6 +30,7 @@ export const images = {
     concept: `${dir}/concept.jpg`,
     gateMorning: `${dir}/gate-morning.jpg`,
     gateLunch: `${dir}/gate-lunch.jpg`,
+    /** ディナーを /lunch に統合したため現在は未使用。夜の写真として再利用可。 */
     gateDinner: `${dir}/gate-dinner.jpg`,
     gateSweets: `${dir}/gate-sweets.jpg`,
     gallery: [

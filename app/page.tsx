@@ -31,18 +31,15 @@ export default function HomePage() {
         scrim={0.4}
       >
         {/*
-          4つの時間帯すべてへ導線を出す。
-          スマホは2列×2段、タブレット以上は横1列に並べる。
+          時間帯ごとの入口を出す。ランチとディナーは同一メニューのため1つにまとめている。
+          スマホは2列、タブレット以上は横1列に並べる。
         */}
         <div className="grid w-full grid-cols-2 gap-3 sm:flex sm:w-auto sm:flex-wrap">
           <CtaLink href="/morning" variant="solidLight" compact className="sm:min-w-[9.5rem]">
             モーニング
           </CtaLink>
           <CtaLink href="/lunch" variant="outlineLight" compact className="sm:min-w-[9.5rem]">
-            ランチ
-          </CtaLink>
-          <CtaLink href="/dinner" variant="outlineLight" compact className="sm:min-w-[9.5rem]">
-            ディナー
+            ランチ・ディナー
           </CtaLink>
           <CtaLink href="/sweets" variant="outlineLight" compact className="sm:min-w-[9.5rem]">
             スイーツ
@@ -61,7 +58,7 @@ export default function HomePage() {
         ratio="4 / 5"
       />
 
-      {/* ---------- 03 モーニング / ランチ / ディナー / スイーツ 分岐 ---------- */}
+      {/* ---------- 03 モーニング / ランチ・ディナー / スイーツ 分岐 ---------- */}
       <GateSection gates={topPage.gates} />
 
       {/* ---------- 04 フードギャラリー ---------- */}

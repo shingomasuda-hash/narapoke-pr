@@ -41,21 +41,17 @@ export const topPage = {
       theme: "light" as const,
     },
     {
+      /*
+       * ディナーはランチと同一メニューのため1枠に統合。
+       * 英字は MORNING / SWEETS と並ぶ見え方を優先して LUNCH のまま残し、
+       * 夜も営業していることは和文コピーとリンク文言で伝える。
+       */
       en: "LUNCH",
-      title: "昼のならポケ。",
-      copy: ["今日のランチを、", "ちょっといい時間に。"],
+      title: "昼と夜のならポケ。",
+      copy: ["今日のごはんを、", "ちょっといい時間に。"],
       href: "/lunch",
-      linkLabel: "Lunchを見る",
+      linkLabel: "Lunch & Dinnerを見る",
       image: images.top.gateLunch,
-      theme: "dark" as const,
-    },
-    {
-      en: "DINNER",
-      title: "夜のならポケ。",
-      copy: ["一日の終わりに、", "ゆっくりと一皿を。"],
-      href: "/dinner",
-      linkLabel: "Dinnerを見る",
-      image: images.top.gateDinner,
       theme: "dark" as const,
     },
     {

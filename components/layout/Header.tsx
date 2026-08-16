@@ -17,7 +17,6 @@ const OVERLAY_ROUTES: Record<string, "light" | "dark"> = {
   "/": "light",
   "/morning": "dark",
   "/lunch": "light",
-  "/dinner": "light",
   "/sweets": "light",
 };
 

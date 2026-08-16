@@ -12,16 +12,16 @@ import { images } from "@/lib/images";
 import { breadcrumbJsonLd, buildMetadata, jsonLdProps } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "ランチ｜なら和ポケ日和｜奈良・橿原",
+  title: "ランチ・ディナー｜なら和ポケ日和｜奈良・橿原",
   description:
-    "奈良県橿原市「なら和ポケ日和」のランチ。魚・野菜・ご飯・タレを一つのボウルで楽しむポケ丼を、和の味わいで。橿原でのおしゃれなランチに、共用駐車場約30台。",
+    "奈良県橿原市「なら和ポケ日和」のランチとディナー。魚・野菜・ご飯・タレを一つのボウルで楽しむポケ丼を、和の味わいで。昼も夜も同じメニュー、共用駐車場約30台。",
   path: "/lunch",
   image: images.lunch.hero,
 });
 
 const breadcrumb = breadcrumbJsonLd([
   { name: "TOP", path: "/" },
-  { name: "ランチ", path: "/lunch" },
+  { name: "ランチ・ディナー", path: "/lunch" },
 ]);
 
 export default function LunchPage() {
@@ -35,11 +35,11 @@ export default function LunchPage() {
         image={lunchPage.hero.image}
         imageSp={lunchPage.hero.imageSp}
         alt={`${shop.name}のポケ丼`}
-        /* 昼は食欲を出すため、写真を深く見せる */
+        /* 昼夜とも食欲を出すため、写真を深く見せる */
         scrim={0.44}
       >
         <CtaLink href="#menu" variant="solidLight" className="w-full sm:w-auto sm:min-w-[13rem]">
-          ランチメニュー
+          メニューを見る
         </CtaLink>
       </Hero>
 
@@ -60,6 +60,7 @@ export default function LunchPage() {
         en={lunchPage.menu.en}
         title={lunchPage.menu.title}
         items={lunchMenu}
+        note={lunchPage.menu.note}
         emptyNote={lunchPage.menu.emptyNote}
         emptyImages={images.lunch.menu}
       />
@@ -73,6 +74,18 @@ export default function LunchPage() {
           steps={lunchPage.customize.steps}
         />
       )}
+
+      {/* ---------- 夜の顔（ディナーは同一メニューのため専用ページを設けない） ---------- */}
+      <TextImageSection
+        en={lunchPage.night.en}
+        title={lunchPage.night.title}
+        paragraphs={lunchPage.night.paragraphs}
+        image={lunchPage.night.image}
+        alt={`夜の${shop.name}`}
+        tone="dark"
+        reverse
+        ratio="4 / 3"
+      />
 
       {/* ---------- クローズアップ ギャラリー ---------- */}
       <section className="section-y bg-sumi">

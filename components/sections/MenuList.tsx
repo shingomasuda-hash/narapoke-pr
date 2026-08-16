@@ -10,6 +10,8 @@ type Props = {
   en: string;
   title: string;
   items: readonly MenuItem[];
+  /** 見出しの下に常に添える一文（時間帯の補足など）。空なら非表示。 */
+  note?: string;
   /** メニュー未登録時に表示する案内文 */
   emptyNote: string;
   /** 未登録時のプレビューに使う写真 */
@@ -29,6 +31,7 @@ export function MenuList({
   en,
   title,
   items,
+  note,
   emptyNote,
   emptyImages,
   tone = "light",
@@ -50,6 +53,7 @@ export function MenuList({
         <SectionTitle
           en={en}
           title={title}
+          lead={note || undefined}
           align="center"
           tone={onLight ? "dark" : "light"}
         />

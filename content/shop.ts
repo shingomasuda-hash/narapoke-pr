@@ -138,8 +138,7 @@ export const hasReservation = shop.reservation.url.trim() !== "";
 export const navigation = [
   { label: "TOP", labelJa: "トップ", href: "/" },
   { label: "MORNING", labelJa: "モーニング", href: "/morning" },
-  { label: "LUNCH", labelJa: "ランチ", href: "/lunch" },
-  { label: "DINNER", labelJa: "ディナー", href: "/dinner" },
+  { label: "LUNCH", labelJa: "ランチ・ディナー", href: "/lunch" },
   { label: "SWEETS", labelJa: "スイーツ", href: "/sweets" },
   { label: "ACCESS", labelJa: "アクセス", href: "/access" },
 ] as const;
