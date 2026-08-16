@@ -30,6 +30,8 @@ export const images = {
     concept: `${dir}/concept.jpg`,
     gateMorning: `${dir}/gate-morning.jpg`,
     gateLunch: `${dir}/gate-lunch.jpg`,
+    gateDinner: `${dir}/gate-dinner.jpg`,
+    gateSweets: `${dir}/gate-sweets.jpg`,
     gallery: [
       `${dir}/gallery-01.jpg`,
       `${dir}/gallery-02.jpg`,
@@ -94,6 +96,44 @@ export const images = {
       `${dir}/lunch-gallery-04.jpg`,
       `${dir}/lunch-gallery-05.jpg`,
       `${dir}/lunch-gallery-06.jpg`,
+    ],
+  },
+
+  /* ---------------- Dinner ---------------- */
+  dinner: {
+    hero: `${dir}/dinner-hero.jpg`,
+    heroSp: `${dir}/dinner-hero-sp.jpg`,
+    concept: `${dir}/dinner-concept.jpg`,
+    cta: `${dir}/dinner-cta.jpg`,
+    menu: [
+      `${dir}/dinner-menu-01.jpg`,
+      `${dir}/dinner-menu-02.jpg`,
+      `${dir}/dinner-menu-03.jpg`,
+    ],
+    gallery: [
+      `${dir}/dinner-gallery-01.jpg`,
+      `${dir}/dinner-gallery-02.jpg`,
+      `${dir}/dinner-gallery-03.jpg`,
+      `${dir}/dinner-gallery-04.jpg`,
+    ],
+  },
+
+  /* ---------------- Sweets ---------------- */
+  sweets: {
+    hero: `${dir}/sweets-hero.jpg`,
+    heroSp: `${dir}/sweets-hero-sp.jpg`,
+    concept: `${dir}/sweets-concept.jpg`,
+    cta: `${dir}/sweets-cta.jpg`,
+    menu: [
+      `${dir}/sweets-menu-01.jpg`,
+      `${dir}/sweets-menu-02.jpg`,
+      `${dir}/sweets-menu-03.jpg`,
+    ],
+    gallery: [
+      `${dir}/sweets-gallery-01.jpg`,
+      `${dir}/sweets-gallery-02.jpg`,
+      `${dir}/sweets-gallery-03.jpg`,
+      `${dir}/sweets-gallery-04.jpg`,
     ],
   },
 } as const;

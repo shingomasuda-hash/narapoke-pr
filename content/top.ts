@@ -29,7 +29,7 @@ export const topPage = {
     image: images.top.concept,
   },
 
-  /** モーニング / ランチへの分岐導線 */
+  /** モーニング / ランチ / ディナー / スイーツへの分岐導線 */
   gates: [
     {
       en: "MORNING",
@@ -47,6 +47,24 @@ export const topPage = {
       href: "/lunch",
       linkLabel: "Lunchを見る",
       image: images.top.gateLunch,
+      theme: "dark" as const,
+    },
+    {
+      en: "DINNER",
+      title: "夜のならポケ。",
+      copy: ["一日の終わりに、", "ゆっくりと一皿を。"],
+      href: "/dinner",
+      linkLabel: "Dinnerを見る",
+      image: images.top.gateDinner,
+      theme: "dark" as const,
+    },
+    {
+      en: "SWEETS",
+      title: "甘いものも。",
+      copy: ["食後にも、", "散歩のとちゅうにも。"],
+      href: "/sweets",
+      linkLabel: "Sweetsを見る",
+      image: images.top.gateSweets,
       theme: "dark" as const,
     },
   ],

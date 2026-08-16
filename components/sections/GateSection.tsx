@@ -44,6 +44,16 @@ const THEME = {
 export function GateSection({ gates }: { gates: readonly Gate[] }) {
   const reduce = useReducedMotion();
 
+  /*
+   * 2枠のときは1枠ずつを大きく見せる。
+   * 3枠以上（モーニング/ランチ/ディナー/スイーツ）では2段組みになるため、
+   * 縦に長くなりすぎないよう、スマホもPCも1枠の高さを抑える。
+   */
+  const few = gates.length <= 2;
+  const frame = few
+    ? "aspect-[4/5] sm:aspect-[16/10] md:aspect-auto md:h-[38rem] lg:h-[44rem]"
+    : "aspect-[16/11] sm:aspect-[16/9] md:aspect-auto md:h-[28rem] lg:h-[32rem]";
+
   return (
     <section className="grid md:grid-cols-2">
       {gates.map((gate, i) => (
@@ -60,7 +70,7 @@ export function GateSection({ gates }: { gates: readonly Gate[] }) {
         >
           <Link
             href={gate.href}
-            className="group relative flex aspect-[4/5] w-full items-end overflow-hidden bg-sumi sm:aspect-[16/10] md:aspect-auto md:h-[38rem] lg:h-[44rem]"
+            className={`group relative flex w-full items-end overflow-hidden bg-sumi ${frame}`}
           >
             <Image
               src={gate.image}
