@@ -13,7 +13,7 @@ import { breadcrumbJsonLd, buildMetadata, jsonLdProps } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "スイーツ｜なら和ポケ日和｜奈良・橿原",
   description:
-    "奈良県橿原市「なら和ポケ日和」のスイーツとドリンク。クレームブリュレやパフェ、果実のドリンクをテイクアウトでも。共用駐車場約30台。",
+    "奈良県橿原市「なら和ポケ日和」のスイーツとドリンク。芋ブリュレ、プリン、チーズケーキ、果実のドリンクをテイクアウトでも。共用駐車場約30台。",
   path: "/sweets",
   image: images.sweets.hero,
 });

@@ -114,7 +114,7 @@ export const manifest = [
     tone: "warm",
     label: "SWEETS MENU",
   })),
-  { file: "sweets-gallery-01.jpg", w: 1000, h: 1000, tone: "warm", label: "PARFAIT" },
+  { file: "sweets-gallery-01.jpg", w: 1000, h: 1000, tone: "warm", label: "DRINK" },
   { file: "sweets-gallery-02.jpg", w: 900, h: 1200, tone: "warm", label: "DRINK" },
   { file: "sweets-gallery-03.jpg", w: 1400, h: 900, tone: "wood", label: "BRULEE" },
   { file: "sweets-gallery-04.jpg", w: 900, h: 1200, tone: "light", label: "ACAI" },

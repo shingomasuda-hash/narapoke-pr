@@ -14,9 +14,9 @@ import type { MenuItem } from "./types";
  *
  * 記入例：
  *   {
- *     name: "クレームブリュレ",
+ *     name: "季節のケーキ",
  *     price: "¥580",
- *     description: "表面はぱりっと、中はなめらかに。",
+ *     description: "その時期の果実をあわせて。",
  *     image: images.sweets.menu[0],
  *     recommended: true,
  *     badge: "人気No.1",
