@@ -38,11 +38,38 @@ export const shop = {
    */
   hours: [
     { label: "モーニング", time: "" },
-    { label: "ランチ", time: "" },
+    { label: "ランチ", time: "11:00 - 16:00" },
+    { label: "ディナー", time: "18:00 - 24:00" },
   ] as { label: string; time: string; note?: string }[],
 
+  /**
+   * 構造化データ（検索結果）用の営業時間
+   * ------------------------------------------------------------
+   * 上の hours は「人が読む表示用」、こちらは「検索エンジンが読む機械用」です。
+   * 表示を変えたいだけなら hours を、Googleに伝える情報を変えたいなら
+   * こちらを直してください。両方そろえておくのが理想です。
+   *
+   * days   … 営業している曜日を英語表記で（定休日は含めない）
+   * opens  … 開店時刻 "HH:MM"
+   * closes … 閉店時刻 "HH:MM"（深夜0時は "24:00"）
+   *
+   * 空配列にすると、構造化データに営業時間を出力しません。
+   */
+  openingHoursSpec: [
+    {
+      days: ["Monday", "Tuesday", "Wednesday", "Friday", "Saturday", "Sunday"],
+      opens: "11:00",
+      closes: "16:00",
+    },
+    {
+      days: ["Monday", "Tuesday", "Wednesday", "Friday", "Saturday", "Sunday"],
+      opens: "18:00",
+      closes: "24:00",
+    },
+  ] as { days: string[]; opens: string; closes: string }[],
+
   /** 定休日（空の場合は非表示） */
-  closed: "",
+  closed: "木曜日",
 
   /** 電話番号（空の場合は電話CTAを非表示） */
   tel: "0744-32-1156",

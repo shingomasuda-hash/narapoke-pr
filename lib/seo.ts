@@ -56,9 +56,17 @@ export function buildMetadata({
  * content/shop.ts を埋めれば自動的に反映されます。
  */
 export function restaurantJsonLd() {
-  const openingHours = shop.hours
-    .filter((h) => h.time)
-    .map((h) => `${h.label} ${h.time}`);
+  /*
+   * 営業時間は schema.org の OpeningHoursSpecification で出力する。
+   * 「ランチ 11:00 - 16:00」のような表示用の文字列をそのまま入れると
+   * 検索エンジンが読めないため、content/shop.ts の openingHoursSpec を使う。
+   */
+  const openingHoursSpecification = shop.openingHoursSpec.map((h) => ({
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: h.days.map((d) => `https://schema.org/${d}`),
+    opens: h.opens,
+    closes: h.closes,
+  }));
 
   return {
     "@context": "https://schema.org",
@@ -82,7 +90,7 @@ export function restaurantJsonLd() {
     hasMap: shop.mapUrl,
     sameAs: [shop.instagram.url],
     ...(shop.tel ? { telephone: shop.tel } : {}),
-    ...(openingHours.length ? { openingHours } : {}),
+    ...(openingHoursSpecification.length ? { openingHoursSpecification } : {}),
     /* 予約URLが設定されているときだけ、予約可であることと予約導線を出力する */
     ...(hasReservation
       ? {
