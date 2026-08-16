@@ -130,13 +130,26 @@ export const lunchPage = {
       "メニューは昼と同じ。\n変わるのは、店内の灯りと、時間の流れだけ。",
       "仕事帰りにひとりで。誰かと囲んで。\n奈良の夜に、肩の力を抜ける場所を。",
     ],
-    image: images.dinner.concept,
+    /* ポケ丼が続かないよう、夜は料理ではなく店内の灯りを見せる */
+    image: images.dinner.gallery[1],
   },
 
   gallery: {
     en: "CLOSE UP",
-    title: "素材の、いちばん近く。",
-    images: images.lunch.gallery,
+    title: "素材と、店の空気と。",
+    /*
+     * 料理の寄りだけを並べると単調になるため、
+     * 店内・手元・ロゴ・テイクアウトを織り交ぜている。
+     * 入れ替えたいときはこの配列の順番を変えるだけで反映される。
+     */
+    images: [
+      images.lunch.gallery[0], // 卵黄とタレの寄り
+      images.top.gallery[4], // 店内のカウンターと提灯
+      images.lunch.gallery[2], // 器を手に持つ
+      images.top.gallery[5], // 壁のロゴ
+      images.lunch.gallery[4], // 盛りつけ
+      images.dinner.gallery[3], // テイクアウト
+    ],
   },
 
   cta: {

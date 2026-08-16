@@ -47,8 +47,8 @@ export default function SweetsPage() {
         title={sweetsPage.concept.title}
         paragraphs={sweetsPage.concept.paragraphs}
         image={sweetsPage.concept.image}
-        alt="クレームブリュレとパフェ"
-        ratio="4 / 3"
+        alt="店内でいただくプリン"
+        ratio="4 / 5"
       />
 
       {/* ---------- メニュー ---------- */}

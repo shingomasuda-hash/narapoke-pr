@@ -33,6 +33,18 @@ export const sweetsMenu: MenuItem[] = [
     badge: "人気",
   },
   {
+    name: "プリン",
+    price: "",
+    description: "銀の皿にのせた、昔ながらのかたさ。ほろ苦いカラメルをまとって。",
+    image: images.sweets.menu[3],
+  },
+  {
+    name: "チーズケーキ",
+    price: "",
+    description: "表面を香ばしく焼き上げて。コーヒーと一緒に、ゆっくりと。",
+    image: images.sweets.menu[4],
+  },
+  {
     name: "スムージー",
     price: "",
     description: "果実をそのまま。テイクアウトもできます。",
@@ -59,7 +71,7 @@ export const sweetsPage = {
     en: "SWEET TIME",
     title: ["ひとくちの、", "ごほうび。"],
     paragraphs: [
-      "香ばしく焦がしたブリュレ、層を重ねたパフェ、果実のドリンク。\n食事のあとにも、ちょっと立ち寄るだけでも。",
+      "香ばしく焦がしたブリュレ、なめらかなプリン、チーズケーキ、果実のドリンク。\n食事のあとにも、ちょっと立ち寄るだけでも。",
       "テイクアウトもできるので、そのまま奈良の散歩へ。\n甘いものの時間は、いつだって自由です。",
     ],
     image: images.sweets.concept,

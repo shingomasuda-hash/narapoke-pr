@@ -105,9 +105,9 @@ export const manifest = [
   /* ---------------- Sweets ---------------- */
   { file: "sweets-hero.jpg", w: 2000, h: 1250, tone: "warm", label: "SWEETS" },
   { file: "sweets-hero-sp.jpg", w: 1200, h: 1600, tone: "warm", label: "SWEETS" },
-  { file: "sweets-concept.jpg", w: 1400, h: 1000, tone: "warm", label: "DESSERT" },
+  { file: "sweets-concept.jpg", w: 1200, h: 1500, tone: "warm", label: "DESSERT" },
   { file: "sweets-cta.jpg", w: 2000, h: 1100, tone: "wood", label: "SWEET TIME" },
-  ...[1, 2, 3].map((n) => ({
+  ...[1, 2, 3, 4, 5].map((n) => ({
     file: `sweets-menu-0${n}.jpg`,
     w: 1200,
     h: 900,

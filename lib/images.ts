@@ -129,6 +129,8 @@ export const images = {
       `${dir}/sweets-menu-01.jpg`,
       `${dir}/sweets-menu-02.jpg`,
       `${dir}/sweets-menu-03.jpg`,
+      `${dir}/sweets-menu-04.jpg`,
+      `${dir}/sweets-menu-05.jpg`,
     ],
     gallery: [
       `${dir}/sweets-gallery-01.jpg`,
