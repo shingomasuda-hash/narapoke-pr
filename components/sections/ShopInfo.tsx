@@ -3,7 +3,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { CtaLink } from "@/components/ui/CtaLink";
 import { images } from "@/lib/images";
-import { hasHours, hasReservation, shop } from "@/content/shop";
+import { hasReservation, shop } from "@/content/shop";
 
 type Row = { label: string; value: string };
 
@@ -35,9 +35,14 @@ export function ShopInfo({
         : shop.address.full,
     },
     { label: "駐車場", value: shop.parking },
+    /*
+     * 営業時間。time が未定でも note があればそちらを出す。
+     * （例：モーニングだけ時間が未確定 → 行ごと消すと理由が伝わらないため）
+     * time も note も空の項目だけを非表示にする。
+     */
     ...shop.hours
-      .filter((h) => h.time)
-      .map((h) => ({ label: h.label, value: h.time })),
+      .filter((h) => h.time || h.note)
+      .map((h) => ({ label: h.label, value: h.time || h.note || "" })),
     ...(shop.closed ? [{ label: "定休日", value: shop.closed }] : []),
     ...(shop.tel ? [{ label: "電話", value: shop.tel }] : []),
     { label: "Instagram", value: shop.instagram.id },
@@ -69,12 +74,11 @@ export function ShopInfo({
                 ))}
               </dl>
 
-              {!hasHours && (
-                <p className="mt-6 text-[0.8125rem] leading-[1.9] text-sumi-soft text-ja">
-                  営業時間・定休日は変更になる場合があります。
-                  最新の情報はInstagramでご確認ください。
-                </p>
-              )}
+              {/* 準備中の時間帯があるため、案内は常に出しておく */}
+              <p className="mt-6 text-[0.8125rem] leading-[1.9] text-sumi-soft text-ja">
+                営業時間・定休日は変更になる場合があります。
+                最新の情報はInstagramでご確認ください。
+              </p>
 
               {/* 予約URLが設定されているときだけ、最優先のCTAとして先頭に出す */}
               {hasReservation && (

@@ -37,7 +37,12 @@ export const shop = {
    * 例: { label: "モーニング", time: "8:00 - 11:00" }
    */
   hours: [
-    { label: "モーニング", time: "" },
+    /*
+     * time が空でも note を書いておけば、その文言が代わりに表示されます。
+     * モーニングの時間が決まったら note を消して time を入れてください。
+     * （あわせて下の openingHoursSpec にも追加すると検索結果に反映されます）
+     */
+    { label: "モーニング", time: "", note: "準備中" },
     { label: "ランチ", time: "11:00 - 16:00" },
     { label: "ディナー", time: "18:00 - 24:00" },
   ] as { label: string; time: string; note?: string }[],
