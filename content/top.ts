@@ -12,7 +12,7 @@ export const topPage = {
     title: ["奈良で、", "ちょっといい日和。"],
     lead: [
       "奈良の食材と、ポケという新しい食文化。",
-      "朝からお昼まで、それぞれの「日和」を。",
+      "朝から夜まで、それぞれの「日和」を。",
     ],
     image: images.top.hero,
     imageSp: images.top.heroSp,

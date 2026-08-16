@@ -11,9 +11,9 @@ import { shop } from "@/content/shop";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "なら和ポケ日和｜奈良・橿原のポケ・ランチ・モーニング",
+  title: "なら和ポケ日和｜奈良・橿原のポケ｜モーニング・ランチ・ディナー",
   description:
-    "奈良県橿原市のポケ専門店「なら和ポケ日和」。奈良の食材と和の感性を掛け合わせたポケボウルを、朝はモーニング、昼はランチで。共用駐車場約30台、橿原でのご飯・カフェ利用に。",
+    "奈良県橿原市のポケ専門店「なら和ポケ日和」。奈良の食材と和の感性を掛け合わせたポケボウルを、モーニング・ランチ・ディナーで。スイーツとドリンクのテイクアウトも。共用駐車場約30台。",
   path: "/",
 });
 
@@ -30,12 +30,22 @@ export default function HomePage() {
         alt={`${shop.name}の料理`}
         scrim={0.4}
       >
-        <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-          <CtaLink href="/morning" variant="solidLight" className="sm:min-w-[12.5rem]">
-            モーニングを見る
+        {/*
+          4つの時間帯すべてへ導線を出す。
+          スマホは2列×2段、タブレット以上は横1列に並べる。
+        */}
+        <div className="grid w-full grid-cols-2 gap-3 sm:flex sm:w-auto sm:flex-wrap">
+          <CtaLink href="/morning" variant="solidLight" compact className="sm:min-w-[9.5rem]">
+            モーニング
           </CtaLink>
-          <CtaLink href="/lunch" variant="outlineLight" className="sm:min-w-[12.5rem]">
-            ランチを見る
+          <CtaLink href="/lunch" variant="outlineLight" compact className="sm:min-w-[9.5rem]">
+            ランチ
+          </CtaLink>
+          <CtaLink href="/dinner" variant="outlineLight" compact className="sm:min-w-[9.5rem]">
+            ディナー
+          </CtaLink>
+          <CtaLink href="/sweets" variant="outlineLight" compact className="sm:min-w-[9.5rem]">
+            スイーツ
           </CtaLink>
         </div>
       </Hero>
@@ -51,7 +61,7 @@ export default function HomePage() {
         ratio="4 / 5"
       />
 
-      {/* ---------- 03 モーニング / ランチ 分岐 ---------- */}
+      {/* ---------- 03 モーニング / ランチ / ディナー / スイーツ 分岐 ---------- */}
       <GateSection gates={topPage.gates} />
 
       {/* ---------- 04 フードギャラリー ---------- */}

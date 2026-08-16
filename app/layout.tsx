@@ -11,11 +11,11 @@ import { images } from "@/lib/images";
 export const metadata: Metadata = {
   metadataBase: new URL(shop.siteUrl),
   title: {
-    default: "なら和ポケ日和｜奈良・橿原のポケ・ランチ・モーニング",
+    default: "なら和ポケ日和｜奈良・橿原のポケ｜モーニング・ランチ・ディナー",
     template: "%s",
   },
   description:
-    "奈良県橿原市のポケ専門店「なら和ポケ日和」。奈良の食材と和の感性を掛け合わせたポケボウルを、モーニングとランチで。共用駐車場約30台。",
+    "奈良県橿原市のポケ専門店「なら和ポケ日和」。奈良の食材と和の感性を掛け合わせたポケボウルを、モーニング・ランチ・ディナーで。共用駐車場約30台。",
   applicationName: shop.name,
   openGraph: {
     type: "website",

@@ -11,13 +11,22 @@ type Props = {
   external?: boolean;
   /** 幅いっぱいに広げる。スマホのCTAで使用。 */
   full?: boolean;
+  /**
+   * 左右の余白を詰める。
+   * ボタンを横に3つ以上並べるときなど、標準の px-8 では入りきらない場合に使う。
+   */
+  compact?: boolean;
   className?: string;
   ariaLabel?: string;
 };
 
-/* 高さ 52px 以上を確保し、スマホでの押しやすさを担保する */
+/*
+ * 高さ 52px 以上を確保し、スマホでの押しやすさを担保する。
+ * 余白（gap / px）は compact で切り替えるため base には含めない。
+ * className 側で px-* を指定しても Tailwind の出力順で打ち消せないため。
+ */
 const base =
-  "group inline-flex min-h-[3.25rem] items-center justify-center gap-3 px-8 text-[0.8125rem] font-en-sans uppercase tracking-en-wide transition-colors duration-500 ease-soft";
+  "group inline-flex min-h-[3.25rem] items-center justify-center text-[0.8125rem] font-en-sans uppercase tracking-en-wide transition-colors duration-500 ease-soft";
 
 const variants: Record<Variant, string> = {
   solid: "bg-sumi text-ivory hover:bg-wood-dark",
@@ -44,10 +53,12 @@ export function CtaLink({
   variant = "solid",
   external = false,
   full = false,
+  compact = false,
   className = "",
   ariaLabel,
 }: Props) {
-  const cls = `${base} ${variants[variant]} ${full ? "w-full" : ""} ${className}`;
+  const spacing = compact ? "gap-2 px-4" : "gap-3 px-8";
+  const cls = `${base} ${spacing} ${variants[variant]} ${full ? "w-full" : ""} ${className}`;
 
   const content = (
     <>

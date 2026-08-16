@@ -77,7 +77,7 @@ export function restaurantJsonLd() {
     url: siteUrl,
     image: `${siteUrl}${images.ogp}`,
     description:
-      "奈良県橿原市のポケ専門店。奈良の食材と和の感性を掛け合わせたポケボウルを、モーニングとランチでお届けします。",
+      "奈良県橿原市のポケ専門店。奈良の食材と和の感性を掛け合わせたポケボウルを、モーニング・ランチ・ディナーでお届けします。スイーツとドリンクのテイクアウトも。",
     servesCuisine: ["ポケ", "ポケ丼", "カフェ"],
     address: {
       "@type": "PostalAddress",
