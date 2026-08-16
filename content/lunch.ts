@@ -25,7 +25,27 @@ import type { MenuItem, Step } from "./types";
  * recommended: true の商品は、一覧の中で大きく（2カラム分）表示されます。
  */
 export const lunchMenu: MenuItem[] = [
-  // ここに商品を追加してください
+  {
+    name: "ポケ丼（プランA〜D）",
+    price: "¥1,320 〜 ¥1,780",
+    description:
+      "メインを2〜3種、サブを3〜4種。選び方によって、組み合わせは約100通り。",
+    image: images.lunch.menu[0],
+    recommended: true,
+    badge: "約100通り",
+  },
+  {
+    name: "〆の鯛だし",
+    price: "",
+    description: "食べ進めたら鯛だしをかけて。最後までさっぱりと。",
+    image: images.lunch.menu[1],
+  },
+  {
+    name: "テイクアウト",
+    price: "",
+    description: "お持ち帰りもできます。ピクニックにも、お家ごはんにも。",
+    image: images.lunch.menu[2],
+  },
 ];
 
 export const lunchPage = {
@@ -63,33 +83,33 @@ export const lunchPage = {
    *   description: "ベースになるご飯と、その日の魚を選びます。"
    */
   customize: {
-    enabled: false,
+    enabled: true,
     en: "HOW TO ENJOY",
     title: "選んで、つくる。",
-    lead: "",
+    lead: "プランを決めて、好きな具材を選ぶだけ。組み合わせは約100通りあります。",
     steps: [
       {
-        en: "PICK",
-        title: "選ぶ",
-        description: "",
+        en: "PLAN",
+        title: "プランを選ぶ",
+        description: "AからDの4プラン。選べる具材の数が変わります。",
         image: images.lunch.steps[0],
       },
       {
-        en: "TOPPING",
-        title: "のせる",
-        description: "",
+        en: "MAIN",
+        title: "メインを選ぶ",
+        description: "サーモン、マグロ、タコ、ネギトロなどから2〜3種。",
         image: images.lunch.steps[1],
       },
       {
-        en: "SAUCE",
-        title: "かける",
-        description: "",
+        en: "SIDE",
+        title: "サブを選ぶ",
+        description: "トマト、枝豆、レタス、パプリカ、コーンなど14種類から3〜4種。",
         image: images.lunch.steps[2],
       },
       {
-        en: "ENJOY",
-        title: "味わう",
-        description: "",
+        en: "FINISH",
+        title: "鯛だしで締める",
+        description: "食べ進めたら鯛だしをかけて。最後までさっぱりと。",
         image: images.lunch.steps[3],
       },
     ] satisfies Step[],

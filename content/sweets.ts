@@ -23,7 +23,27 @@ import type { MenuItem } from "./types";
  *   },
  */
 export const sweetsMenu: MenuItem[] = [
-  // ここに商品を追加してください
+  {
+    name: "芋ブリュレ",
+    price: "¥980",
+    description:
+      "まるごとのさつまいもを香ばしく焦がしたブリュレ。中でバニラアイスがとろけ、マシュマロとオレオを添えて。",
+    image: images.sweets.menu[0],
+    recommended: true,
+    badge: "人気",
+  },
+  {
+    name: "スムージー",
+    price: "",
+    description: "果実をそのまま。テイクアウトもできます。",
+    image: images.sweets.menu[1],
+  },
+  {
+    name: "アサイーボウル",
+    price: "",
+    description: "グラノーラとフルーツを重ねて。朝にも、おやつにも。",
+    image: images.sweets.menu[2],
+  },
 ];
 
 export const sweetsPage = {

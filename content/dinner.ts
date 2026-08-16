@@ -23,7 +23,27 @@ import type { MenuItem } from "./types";
  *   },
  */
 export const dinnerMenu: MenuItem[] = [
-  // ここに商品を追加してください
+  {
+    name: "ポケ丼（プランA〜D）",
+    price: "¥1,320 〜 ¥1,780",
+    description:
+      "夜も同じく、メイン2〜3種とサブ3〜4種から。組み合わせは約100通り。",
+    image: images.dinner.menu[0],
+    recommended: true,
+    badge: "約100通り",
+  },
+  {
+    name: "テイクアウト",
+    price: "",
+    description: "お持ち帰りもできます。仕事帰りに、そのまま持って。",
+    image: images.dinner.menu[1],
+  },
+  {
+    name: "〆の鯛だし",
+    price: "",
+    description: "食べ進めたら鯛だしをかけて。一日の終わりに、さっぱりと。",
+    image: images.dinner.menu[2],
+  },
 ];
 
 export const dinnerPage = {
