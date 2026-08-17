@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import "./globals.css";
 import { fontVariables } from "./fonts";
 import { Header } from "@/components/layout/Header";
@@ -40,7 +41,36 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja" className={fontVariables}>
+      {/*
+        Google タグマネージャー本体。
+        next/script が <head> の早い位置に読み込ませてくれるため、
+        タグの貼り付け位置を自分で管理する必要はない。
+        content/shop.ts の gtmId を空にすると、まるごと出力されない。
+      */}
+      {shop.gtmId && (
+        <Script id="gtm" strategy="afterInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','${shop.gtmId}');`}
+        </Script>
+      )}
+
       <body>
+        {/* JavaScript が無効な環境向けのタグマネージャー。body の直後に置く必要がある */}
+        {shop.gtmId && (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${shop.gtmId}`}
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+              title="Google Tag Manager"
+            />
+          </noscript>
+        )}
+
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:bg-sumi focus:px-5 focus:py-3 focus:text-ivory"
